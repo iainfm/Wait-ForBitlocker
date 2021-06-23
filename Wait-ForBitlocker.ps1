@@ -48,7 +48,7 @@ if ($enc.VolumeStatus -ne $DetectionText) {
 		
 		if ($duration.Minutes -ge $Minutes) {
 			# Abort if time limit is reached
-			# After discussion with Ollie Minns it was decided to not feedback anything to the user if timeout has expired.
+			# After discussion it was decided to not feedback anything to the user if timeout has expired.
 			# But add here if this ever changes (amend $task message and call Register-ScheduledTask and Start-ScheduledTask)
 			# For now, exit with success
             Write-Host "Exiting"
