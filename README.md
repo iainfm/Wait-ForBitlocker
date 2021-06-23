@@ -2,6 +2,8 @@
 
 Compliled with https://github.com/MScholtes/TechNet-Gallery/tree/master/PS2EXE-GUI
 
+Assign to users, not devices. Run as system context.
+
 Optional Parameters:
 
 **-Minutes [int]** : Time to wait for encryption to complete before exiting. Default 30.
