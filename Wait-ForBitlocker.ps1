@@ -3,7 +3,7 @@
 # For ESP of laptop builds
 #
 # Iain McLaren (DXC EUC) - iain.mclaren2@dxc.com
-# 23 June 2021
+# 24 June 2021
 #
 # Seems most reliable to run via Endpoint Manager when converted
 # to an exe with Win-PS2EXE - https://github.com/MScholtes/TechNet-Gallery/tree/master/PS2EXE-GUI
@@ -61,7 +61,17 @@ if ($enc.VolumeStatus -ne $DetectionText) {
 # On encryption completion:
 
 # Create the Scheduled task script that displays a message to the user. Beware the back-ticked quotes for the text.
-$task = "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show(`"Welcome to your new DVSA device. Setup has now finished, but some facilities will not be available until after a restart.`n`nPlease reboot now to complete the installation.`", 'Device setup complete', 'OK', [System.Windows.Forms.MessageBoxIcon]::Information);Disable-ScheduledTask -TaskName TellUserReboot;" | Out-File $file -ErrorAction Ignore
+$task = "
+`$title = 'Device setup complete'
+`$message = `"Welcome to your new DVSA device. Setup has now finished, but some facilities will not be available until after a restart.
+
+Please wait until you see the 'You are now syncing OneDrive' notification, then reboot your device.
+
+Installation of some applications will continue after you restart.`"
+
+[void] [System.Reflection.Assembly]::LoadWithPartialName(`"Microsoft.VisualBasic`")
+[Microsoft.VisualBasic.Interaction]::MsgBox(`$message, `"OKonly,SystemModal,Information`", `$title)
+" | Out-File $file -ErrorAction Ignore
 
 # Commit the scheduled task (will be cleaned up later by another app
 Register-ScheduledTask TellUserReboot -InputObject $D -Force | Out-Null
