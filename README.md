@@ -12,4 +12,4 @@ Optional Parameters:
 
 **-ReturnCode [int]** : Return code to exit with when encryption has timed out. Default 1707.
 
-*Scheduled task and ps1 file tided up by TODO: Insert app name here.*
+*Scheduled task and ps1 file tided up by Clean-WaitForBitlocker.ps1
