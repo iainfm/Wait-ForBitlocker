@@ -56,7 +56,7 @@ if ($enc.VolumeStatus -ne $DetectionText) {
 			$task = "
 			Start-Process control -ArgumentList '/name Microsoft.BitLockerDriveEncryption'
 			`$title = 'Device progress update'
-			`$message = `"Welcome to your new device. Setup has now finished, but disk encryption is still in progress.`r`rPlease monitor the BitLocker Drive Encruption window that has opened, and reboot your device when the status changes to 'On'.`r`rInstallation of some applications will continue after you restart.`"
+			`$message = `"Welcome to your new device. Setup has now finished, but disk encryption is still in progress.`r`rPlease monitor the BitLocker Drive Encryption window that has opened, and reboot your device when the status changes to 'On'.`r`rInstallation of some applications will continue after you restart.`"
 
 			[void] [System.Reflection.Assembly]::LoadWithPartialName(`"Microsoft.VisualBasic`")
 			[Microsoft.VisualBasic.Interaction]::MsgBox(`$message, `"OKonly,SystemModal,Information`", `$title)
