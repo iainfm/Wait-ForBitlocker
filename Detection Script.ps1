@@ -1,4 +1,5 @@
 $BV = Get-BitLockerVolume -MountPoint ${env:SystemDrive}
-if ($BV.VolumeStatus -eq "FullyEncrypted") {
+$file = "${env:PROGRAMDATA}\Tell-UserReboot.ps1"
+if (($BV.VolumeStatus -eq "FullyEncrypted") -Or (Test-Path $file)) {
 	write-output "Found"
 }
